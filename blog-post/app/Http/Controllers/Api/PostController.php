@@ -14,7 +14,7 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(): AnonymousResourceCollection
+    public function index()
     {
         return PostResource::collection(Post::all());
     }
