@@ -1,4 +1,5 @@
 <template> 
+
 <form class="space-y-6" @submit.prevent="storePost">
     <div>
         <label for="name">Title Post</label>
@@ -25,10 +26,11 @@ export default{
             title:'',
             text:''
         });
-        const { createPost } = usePosts();
+        const { createPost} = usePosts();
         const storePost = async() =>{
             await createPost({...form});
-            router.push({name:'posts.index'});
+            await router.push({name:'posts.index'});
+            
 
         };
         return {

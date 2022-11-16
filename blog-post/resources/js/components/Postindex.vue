@@ -22,6 +22,9 @@
                   <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                     Id Posted
                   </th>
+                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                    Action
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -30,9 +33,10 @@
                   <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900" v-text="post.id"></td>
                   <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap" v-text="post.title"></td>
                   <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap" v-text="post.text"></td>
-                  <td>
-                    
-                    </td>
+                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"></td>
+                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                    <router-link class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap" :to="{name: 'posts.edit',params:{id:post.id}}">Edit</router-link>
+                  </td>
                 </tr>
                 </template>
                 

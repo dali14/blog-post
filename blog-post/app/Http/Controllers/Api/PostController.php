@@ -27,6 +27,10 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' =>'required',
+            'text' => 'required'
+        ]);
         Post::create([
             'title' =>$request->title,
             'text' =>$request->text,
@@ -42,7 +46,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return PostResource::make($post);
     }
 
     /**
@@ -54,7 +58,11 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $request->validate([
+            'title' =>'required',
+            'text' => 'required'
+        ]);
+        $post->update($request->only(['title','text']));
     }
 
     /**
