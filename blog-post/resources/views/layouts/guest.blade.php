@@ -14,7 +14,7 @@
         <!-- Scripts -->
         
     </head>
-    <body>
+    <body id="app">
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
         </div>
