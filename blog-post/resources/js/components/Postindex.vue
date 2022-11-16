@@ -1,0 +1,3 @@
+<template>
+    hello word
+</template>
