@@ -3,7 +3,7 @@
       <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
         
         <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-            <div class="flex">
+            <div class="flex mb-3">
             <router-link :to="{name:'posts.add'}" class="bg-green-500 px-2 py-1 text-white rounded">Add Post</router-link>
         </div>
           <div class="overflow-hidden">
