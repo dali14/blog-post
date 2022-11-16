@@ -27,6 +27,13 @@ export default function usePosts(){
     const updatePost = async(id) =>{
         await axios.put('/api/posts/' + id, post.value);
     };
+    const destroyPost = async (id) =>{
+        if(!window.confirm('Supprime ce Post ?')) return;
+        await axios.delete('/api/posts/'+id);
+        await getPosts();
+        
+
+    };
 
     return{
         posts,
@@ -35,7 +42,8 @@ export default function usePosts(){
         createPost,
         getPost,
         storePost,
-        updatePost
+        updatePost,
+        destroyPost
         
 
     };

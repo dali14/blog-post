@@ -1,3 +1,4 @@
+
 <template>
     <div class="flex flex-col">
       <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -20,7 +21,7 @@
                     Text
                   </th>
                   <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                    Id Posted
+                    Posted By
                   </th>
                   <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                     Action
@@ -35,7 +36,8 @@
                   <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap" v-text="post.text"></td>
                   <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"></td>
                   <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    <router-link class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap" :to="{name: 'posts.edit',params:{id:post.id}}">Edit</router-link>
+                    <router-link class="text-black-600 hover:text-red-900" :to="{name: 'posts.edit',params:{id:post.id}}">Edit</router-link>
+                    <button @click="deletePost(post.id)" class="text-red-600 hover:text-red-900">Delete</button>
                   </td>
                 </tr>
                 </template>
@@ -49,15 +51,23 @@
     </template>
 
 <script>
+
 import { onMounted } from 'vue';
 import usePosts from '../services/postservices.js';
 
+
 export default{
+  
     setup(){
-        const{ posts,getPosts} = usePosts();
+        const{ posts,getPosts,destroyPost } = usePosts();
+
+        const deletePost = async (id) =>{
+          await destroyPost(id);
+        };
         onMounted(getPosts());
         return {
-            posts
+            posts,
+            deletePost
         };
     }
     
