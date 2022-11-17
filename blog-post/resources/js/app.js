@@ -1,17 +1,19 @@
  import './bootstrap';
 
 import Alpine from 'alpinejs';
-import {createApp} from "vue";
+import {createApp, Vue} from "vue";
 import Postindex from "./components/Postindex.vue";
-import router from "./router";
+import Posttest from "./components/TestComponent.vue";
 
-createApp({
-    components:{
-        Postindex
-    }
-})
-.use(router)
-.mount('#app');
+
 
 window.Alpine = Alpine;
 Alpine.start();
+
+createApp({
+    components:{
+        Postindex,
+        Posttest
+    }
+})
+.mount('#app');

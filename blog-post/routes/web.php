@@ -18,8 +18,19 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $posts = App\Models\Post::all();
+    foreach($posts as $post) {
+        if($post->user) {
+            $post->username = $post->user->name;
+        }
+    }
+    return view('dashboard', ["posts" => $posts]);
 })->middleware(['auth'])->name('dashboard');
+
+Route::get('/test', function () {
+    $posts = App\Models\Post::all();
+    return view('test', ["posts" => $posts]);
+});
 
 require __DIR__.'/auth.php';
 Route::view('{any}','dashboard')

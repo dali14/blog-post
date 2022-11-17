@@ -5,7 +5,7 @@
         
         <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
             <div class="flex mb-3">
-            <router-link :to="{name:'posts.add'}" class="bg-green-500 px-2 py-1 text-white rounded">Add Post</router-link>
+            <div class="font-medium text-sm text-gray-500">{{user.email}}</div>
         </div>
           <div class="overflow-hidden">
             <table class="min-w-full">
@@ -34,10 +34,8 @@
                   <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900" v-text="post.id"></td>
                   <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap" v-text="post.title"></td>
                   <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap" v-text="post.text"></td>
-                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"></td>
+                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap" v-text="post.username || ''"></td>
                   <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    <router-link class="text-black-600 hover:text-red-900" :to="{name: 'posts.edit',params:{id:post.id}}">Edit</router-link>
-                    <button @click="deletePost(post.id)" class="text-red-600 hover:text-red-900">Delete</button>
                   </td>
                 </tr>
                 </template>
@@ -52,22 +50,21 @@
 
 <script>
 
-import { onMounted } from 'vue';
-import usePosts from '../services/postservices.js';
-
-
 export default{
-  
-    setup(){
-        const{ posts,getPosts,destroyPost } = usePosts();
 
-        const deletePost = async (id) =>{
-          await destroyPost(id);
-        };
-        onMounted(getPosts());
+  props: {
+    posts: {
+      required: true,
+    },
+    user: {
+      required: true,
+    }
+  },
+  
+    setup(props){
         return {
-            posts,
-            deletePost
+            posts: props.posts,
+            user: props.user,
         };
     }
     
