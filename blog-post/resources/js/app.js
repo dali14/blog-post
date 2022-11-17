@@ -13,7 +13,10 @@ Alpine.start();
 createApp({
     components:{
         Postindex,
-        Posttest
+        Posttest,
+        
+
+
     }
 })
 .mount('#app');

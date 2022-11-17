@@ -5,7 +5,7 @@
         
         <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
             <div class="flex mb-3">
-            <div class="font-medium text-sm text-gray-500">{{user.email}}</div>
+            <div class="font-medium text-sm text-gray-500">My Posts Lists</div>
         </div>
           <div class="overflow-hidden">
             <table class="min-w-full">
@@ -35,8 +35,8 @@
                   <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap" v-text="post.title"></td>
                   <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap" v-text="post.text"></td>
                   <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap" v-text="post.username || ''"></td>
-                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                  </td>
+                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">Edit</td>
+                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">Delete</td>
                 </tr>
                 </template>
                 
@@ -46,7 +46,7 @@
         </div>
       </div>
     </div>  
-    </template>
+</template>
 
 <script>
 

@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     $posts = App\Models\Post::all();
+
     foreach($posts as $post) {
         if($post->user) {
             $post->username = $post->user->name;
@@ -27,10 +28,10 @@ Route::get('/dashboard', function () {
     return view('dashboard', ["posts" => $posts]);
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/test', function () {
-    $posts = App\Models\Post::all();
-    return view('test', ["posts" => $posts]);
-});
+Route::get('/addpost', function () {
+    
+    return view('test');
+})->middleware(['auth'])->name('test');
 
 require __DIR__.'/auth.php';
 Route::view('{any}','dashboard')
